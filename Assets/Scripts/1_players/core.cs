@@ -9,19 +9,9 @@ public class sameMove : MonoBehaviour
     public KeyCode interAct, up, down, left, right;
     [SerializeField]
     float mSpeed;
-    int keyItemCount, gageCount;
+    bool keyItemCount;//, gageCount;
     bool over;
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void MoveCheck()
     {
         float x = 0, y = 0;
@@ -42,9 +32,19 @@ public class sameMove : MonoBehaviour
     {
         if (Input.GetKeyDown(interAct))
         {
-            //return this.transform.position;
+
         }
     }
+    public void InteractEnd()
+    {
+        keyItemCount = false;
+    }
+
+    public void itemGet()
+    {
+        keyItemCount = true;
+    }
+
     public void GameOver()
     {
         over = true;
