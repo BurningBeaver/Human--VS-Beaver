@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -15,6 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text timerText;
     [SerializeField] private Gradient timerColor;
     [SerializeField] private Image timerImage;
+    [SerializeField] private Image fadeImage;
 
     private bool isGamePlay;
 
@@ -50,6 +53,16 @@ public class GameManager : MonoBehaviour
     private void GameEnd(bool isHumanWin)
     {
         isGamePlay = false;
+        fadeImage.DOFade(1, 2.5f).From(0).OnPlay(() =>
+        {
+            fadeImage.gameObject.SetActive(true);
+        }).OnComplete(() =>
+        {
+            if (isHumanWin)
+                SceneManager.LoadScene("3-2_Human Win");
+            else
+                SceneManager.LoadScene("3-1_Beaver Win");
+        });
         Debug.Log(isHumanWin);
     }
 }

@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Title.unity
     guid: 7a4954b2aa0769e42abe17c1a9c266be
+  - enabled: 1
+    path: Assets/Scenes/3-1_Beaver Win.unity
+    guid: 2253fe10cb25f40bd946d2db222755ed
+  - enabled: 1
+    path: Assets/Scenes/3-2_Human Win.unity
+    guid: 54c5bf6b6f3f54b7a98d7eb286f7341d
   m_configObjects: {}
