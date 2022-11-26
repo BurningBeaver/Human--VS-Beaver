@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
         timer = maxTimer;
         isGamePlay = true;
         _houses = FindObjectsOfType<house>().ToList();
+        CheckHumanGameWin();
     }
 
     private void LateUpdate()

@@ -23,7 +23,12 @@ public class TreeGeneration : MonoBehaviour
         mySequence.Append(transform.DOScale(new Vector3(1, 1.25f, 1), 0.15f));
         mySequence.Append(transform.DOScale(new Vector3(1.25f, 0.75f, 1), 0.15f));
         mySequence.Append(transform.DOScale(new Vector3(1, 1, 1), 0.15f));
-        mySequence.OnComplete(() => { Instantiate(branch, transform.position + (Vector3)spot, transform.rotation); });
+        mySequence.OnComplete(() =>
+        {
+            var transformPosition = transform.position + (Vector3)spot;
+            var a =Instantiate(branch, transform.position, transform.rotation);
+            a.transform.DOMove(transformPosition, 0.4f).SetEase(Ease.OutCubic);
+        });
         StartCoroutine(wait());
     }
 

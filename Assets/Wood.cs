@@ -11,7 +11,7 @@ public class Wood : MonoBehaviour
     {
         Sequence a = DOTween.Sequence();
         a.Append(transform.DOMoveY(0.5f, 0.5f).SetRelative());
-        a.Join(transform.DOScale(1, 0.5f).From(0));
+        a.Join(transform.DOScale(1, 0.5f).From(0.25f));
         a.Join(transform.GetComponent<SpriteRenderer>().DOFade(1, 0.5f).From(0));
         a.Play();
 
