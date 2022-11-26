@@ -20,6 +20,7 @@ public class Human : Core
     private TileInteraction WDH;
     private bool cantInteractWithRiver;
     public GameObject waterEffect;
+    public GameObject damRemoveEffect;
 
     private IEnumerator BreakWait()
     {
@@ -98,6 +99,7 @@ public class Human : Core
         {
             animator.SetTrigger("Destroy");
         }
+
         if (WDH == TileInteraction.Pouring)
         {
             Pouring();
@@ -128,6 +130,7 @@ public class Human : Core
 
     private void Destroying()
     {
+        Instantiate(damRemoveEffect, transform.position, Quaternion.identity);
         waterManager.RemoveDam(transform.position);
         InteractEnd();
         StartCoroutine(BreakWait());

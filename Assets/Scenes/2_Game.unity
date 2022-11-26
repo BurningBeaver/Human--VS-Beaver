@@ -47479,7 +47479,7 @@ MonoBehaviour:
   tilemap: {fileID: 1590266212}
   waterLoadTilemap: {fileID: 1297379148}
   damTilemap: {fileID: 2054850373}
-  waterLoadAllowTile: {fileID: 11400000, guid: 9eb6880a443e94253bbdc5b52fa3e1d3, type: 2}
+  waterLoadAllowTile: {fileID: 11400000, guid: a03375a78f1fd4f1abae7ea67f07db2d, type: 2}
   waterTile: {fileID: 11400000, guid: 48ff3f9b7b9b742aaab784ee0ef060fd, type: 2}
   damTile: {fileID: 11400000, guid: dc937760f7ce24e72b099c25132c5e75, type: 2}
 --- !u!4 &1857121529
@@ -47974,6 +47974,10 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 7903534942959540686, guid: 349d7f5993def454bbbfca3759b7e645, type: 3}
+      propertyPath: damRemoveEffect
+      value: 
+      objectReference: {fileID: 7881068726964103850, guid: f01d86cccc9b246c899876ac91bbb1ac, type: 3}
     m_RemovedComponents: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5541714691886091420, guid: 349d7f5993def454bbbfca3759b7e645, type: 3}
