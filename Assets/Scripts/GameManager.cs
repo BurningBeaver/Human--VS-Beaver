@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<house> _houses;
 
     private float timer = 10;
-    private float maxTimer = 10;
+
+    [SerializeField] private float maxTimer = 10;
 
     [SerializeField] private Text timerText;
     [SerializeField] private Gradient timerColor;
@@ -31,4 +32,5 @@ public class GameManager : MonoBehaviour
         {
         }
     }
+    
 }
