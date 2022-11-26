@@ -16,13 +16,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Gradient timerColor;
     [SerializeField] private Image timerImage;
 
+    private bool isGamePlay;
+
     private void Awake()
     {
+        isGamePlay = true;
         _houses = FindObjectsOfType<house>().ToList();
     }
 
     private void LateUpdate()
     {
+        if (!isGamePlay) return;
+
         timer = Mathf.Max(timer - Time.deltaTime, 0);
         var timerImageFillAmount = Mathf.Clamp01(timer / maxTimer);
         timerImage.fillAmount = timerImageFillAmount;
@@ -30,7 +35,21 @@ public class GameManager : MonoBehaviour
         timerText.text = $"{timer:F2}";
         if (timer <= 0)
         {
+            GameEnd(false);
         }
     }
-    
+
+    public void CheckHumanGameWin()
+    {
+        if (_houses.Count == _houses.Count(p => p.onFire))
+        {
+            GameEnd(true);
+        }
+    }
+
+    private void GameEnd(bool isHumanWin)
+    {
+        isGamePlay = false;
+        Debug.Log(isHumanWin);
+    }
 }

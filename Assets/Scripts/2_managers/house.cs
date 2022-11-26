@@ -9,7 +9,7 @@ public class house : MonoBehaviour
     [SerializeField] private GameObject effect;
     private SpriteRenderer _spriteRenderer;
     [SerializeField] private Color burningColor;
-    int Gage, GoalGage;
+    [SerializeField] int Gage, GoalGage;
 
     public bool onFire
     {
@@ -29,6 +29,7 @@ public class house : MonoBehaviour
         return onFire;
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     public void GageUp()
     {
         Gage++;
@@ -43,6 +44,7 @@ public class house : MonoBehaviour
         {
             _spriteRenderer.color = Color.white;
             effect.SetActive(false);
+            FindObjectOfType<GameManager>().CheckHumanGameWin();
         }
     }
 }
