@@ -13,8 +13,9 @@ public class Beaver : Core
     protected override void Update()
     {
         base.Update();
-        if (!KeyItemFULL())
+        if (KeyItemNotFULL())
         {
+            print("itemgettinhg");
             var woods = Physics2D.OverlapCircleAll(transform.position, handLength).Where(p => p.CompareTag("Wood"));
             if (woods != null)
                 foreach (var w in woods)
@@ -70,7 +71,7 @@ public class Beaver : Core
             return true;
         return false;
     }
-    public bool KeyItemFULL()
+    public bool KeyItemNotFULL()
     {
         if (keyItemCount <= maxItemCount)
             return true;
