@@ -25,7 +25,7 @@ public class scoreManager : MonoBehaviour
         int i = houses.Length;
         foreach (house h in houses)
         {
-            if (h.getSta())
+            if (h.GetStat())
                 i--;
         }
         if (i == 0)
