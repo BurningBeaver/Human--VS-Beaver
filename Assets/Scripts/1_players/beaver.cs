@@ -13,7 +13,7 @@ public class Beaver : Core
     protected override void Update()
     {
         base.Update();
-        if (!GetKeyItem())
+        if (!KeyItemFULL())
         {
             var woods = Physics2D.OverlapCircleAll(transform.position, handLength).Where(p => p.CompareTag("Wood"));
             if (woods != null)
@@ -29,7 +29,7 @@ public class Beaver : Core
     {
         if (Input.GetKeyDown(interActionKey))
         {
-            if (!isInteracting && waterManager.IsWater(transform.position) && !waterManager.IsDam(transform.position) && GetKeyItem())
+            if (!isInteracting && waterManager.IsWater(transform.position) && !waterManager.IsDam(transform.position) && KeyItemHave())
             {
                 isInteracting = true;
             }
@@ -62,9 +62,15 @@ public class Beaver : Core
     {
         keyItemCount--;
     }
-    public bool GetKeyItem()
+    public bool KeyItemHave()
     {
-        if (keyItemCount > 0 && keyItemCount <= maxItemCount)
+        if (keyItemCount > 0)
+            return true;
+        return false;
+    }
+    public bool KeyItemFULL()
+    {
+        if (keyItemCount <= maxItemCount)
             return true;
         return false;
     }
