@@ -45,6 +45,7 @@ public class Beaver : Core
     private void gageUp()
     {
         gageCount++;
+        animator.SetTrigger("action");
         if (goalGage <= gageCount)
             Setting();
     }
