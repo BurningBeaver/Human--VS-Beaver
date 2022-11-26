@@ -103,12 +103,13 @@ public class Human : Core
 
         animator.SetBool(IsPickOnWater, false);
         InteractEnd();
+        useItem();
     }
-    public override void InteractEnd()
+   /* public override void InteractEnd()
     {
         base.InteractEnd();
         WDH = 0;
-    }
+    }*/
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()
