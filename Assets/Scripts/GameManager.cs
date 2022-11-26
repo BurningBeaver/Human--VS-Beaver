@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private float maxTimer = 10;
 
-    [SerializeField] private Text timerText;
+    [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private Gradient timerColor;
     [SerializeField] private Image timerImage;
     [SerializeField] private Image fadeImage;
@@ -35,7 +36,7 @@ public class GameManager : MonoBehaviour
         var timerImageFillAmount = Mathf.Clamp01(timer / maxTimer);
         timerImage.fillAmount = timerImageFillAmount;
         timerImage.color = timerColor.Evaluate(1 - timerImageFillAmount);
-        timerText.text = $"{timer:F2}";
+        timerText.text = $"{Mathf.Floor(timer)}초";
         if (timer <= 0)
         {
             GameEnd(false);

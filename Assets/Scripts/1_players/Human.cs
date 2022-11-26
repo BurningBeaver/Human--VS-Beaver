@@ -11,6 +11,7 @@ public class Human : Core
     [Header("범위")] [SerializeField] private float bucketRange;
     [SerializeField] int gageCount, goalGage, WDH;
     bool cantInteractWithRiver;
+    public GameObject waterEffect;
 
     IEnumerator BreakWait()
     {
@@ -18,6 +19,7 @@ public class Human : Core
         yield return new WaitForSeconds(.5f);
         cantInteractWithRiver = false;
     }
+
     protected override void InterActCheck()
     {
         if (Input.GetKeyDown(interActionKey))
@@ -84,6 +86,7 @@ public class Human : Core
             gageCount = 0;
             if (WDH == 1)
             {
+                Instantiate(waterEffect, transform.position, Quaternion.identity);
                 SoundManager.Instance.PlaySFX("WaterFill");
                 Debug.Log("물 획득");
                 animator.SetBool(IsPickOnWater, true);
@@ -120,11 +123,11 @@ public class Human : Core
     {
         keyItemHave = true;
     }
+
     public void UseItem()
     {
         keyItemHave = false;
     }
-
 
 
     /* public override void InteractEnd()
