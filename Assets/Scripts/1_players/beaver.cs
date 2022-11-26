@@ -33,4 +33,9 @@ public class Beaver : Core
         waterManager.SetDam(transform.position);
         InteractEnd();
     }
+    public override void InteractEnd()
+    {
+        base.InteractEnd();
+        useItem();
+    }
 }

@@ -28,6 +28,7 @@ public class house : MonoBehaviour
     public void GageUp()
     {
         Gage++;
+        Debug.Log("house Poured");
         if (Gage >= GoalGage)
         {
             effect.SetActive(false);

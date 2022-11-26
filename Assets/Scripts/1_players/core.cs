@@ -58,11 +58,11 @@ public abstract class Core : MonoBehaviour
         if (!isInteracting && !over && movePosition.magnitude != 0)
         {
             transform.Translate(movePosition);
-            GetComponent<Animator>().SetBool("is_move", true);
+            animator.SetBool("is_move", true);
         }
         else
         {
-            GetComponent<Animator>().SetBool("is_move", false);
+            animator.SetBool("is_move", false);
         }
 
         //방향 제어
@@ -75,10 +75,9 @@ public abstract class Core : MonoBehaviour
 
     protected abstract void InterActCheck();
 
-    public void InteractEnd()
+    public virtual void InteractEnd()
     {
         isInteracting = false;
-        keyItemHave = false;
     }
 
     public void itemGet()
@@ -93,6 +92,11 @@ public abstract class Core : MonoBehaviour
 
     protected bool GetKeyItem()
     {
+        //Debug.Log("keyItemHave : " + keyItemHave);
         return keyItemHave;
+    }
+    protected void useItem()
+    {
+        keyItemHave = false;
     }
 }
