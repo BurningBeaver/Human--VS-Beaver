@@ -100,6 +100,12 @@ public class Human : Core
             animator.SetTrigger("Destroy");
         }
 
+        if (WDH == TileInteraction.WaterGetting)
+        {
+            SoundManager.Instance.PlaySFX("WaterFill");
+            animator.SetTrigger("Bucket");
+        }
+
         if (WDH == TileInteraction.Pouring)
         {
             Pouring();
@@ -111,12 +117,12 @@ public class Human : Core
         {
             isInteracting = false;
             gageCount = 0;
+        
             if (WDH == TileInteraction.WaterGetting)
             {
                 Instantiate(waterEffect, transform.position, Quaternion.identity);
-                SoundManager.Instance.PlaySFX("WaterFill");
+              
                 Debug.Log("물 획득");
-                animator.SetTrigger("Bucket");
                 animator.SetBool(IsPickOnWater, true);
                 itemGet();
                 InteractEnd();
