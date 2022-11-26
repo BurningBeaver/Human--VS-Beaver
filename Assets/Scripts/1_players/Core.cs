@@ -9,6 +9,7 @@ public abstract class Core : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     protected Animator animator;
     protected WaterManager waterManager;
+    protected GameManager gameManager;
 
     [Header("조작키")] [SerializeField] protected KeyCode interActionKey;
     [SerializeField] protected KeyCode upKey;
@@ -24,6 +25,7 @@ public abstract class Core : MonoBehaviour
     private void Awake()
     {
         waterManager = FindObjectOfType<WaterManager>();
+        gameManager = FindObjectOfType<GameManager>();
         animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }

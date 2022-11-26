@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI woodCountText;
+    [SerializeField] private TextMeshProUGUI fireCountText;
 
     [SerializeField] private Gradient timerColor;
     [SerializeField] private Image timerImage;
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
 
     public void CheckHumanGameWin()
     {
+        fireCountText.text = $"x {_houses.Count - _houses.Count(p => p.onFire)}";
         if (_houses.Count == _houses.Count(p => p.onFire))
         {
             GameEnd(true);
