@@ -57,10 +57,12 @@ public class Beaver : Core
     public override void itemGet()
     {
         keyItemCount++;
+        animator.SetInteger("item_count", keyItemCount);
     }
     public void UseItem()
     {
         keyItemCount--;
+        animator.SetInteger("item_count", keyItemCount);
     }
     public bool KeyItemHave()
     {
