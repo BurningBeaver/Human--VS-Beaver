@@ -4,25 +4,33 @@ using UnityEngine;
 
 public class house : MonoBehaviour
 {
-    [SerializeField]
-    GameObject effect;
+    [SerializeField] private GameObject effect;
+    private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Color burningColor;
     int Gage, GoalGage;
-    bool onFire;
+
+    public bool onFire
+    {
+        get => Gage >= GoalGage;
+    }
+
     private void Awake()
     {
-        onFire = true;
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer.color = burningColor;
     }
+
     public bool GetStat()
     {
         return onFire;
     }
+
     public void GageUp()
     {
         Gage++;
         if (Gage >= GoalGage)
         {
             effect.SetActive(false);
-            onFire = false;
         }
     }
 }
