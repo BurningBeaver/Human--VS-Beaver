@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Human : Core
@@ -8,11 +6,6 @@ public class Human : Core
 
     
     [SerializeField] int gageCount, goalGage, WDH;
-
-    private void Start()
-    {
-        waMa = FindObjectOfType<WaterManager>();
-    }
 
     protected override void InterActCheck()
     {
@@ -42,12 +35,12 @@ public class Human : Core
 
     private int GetTile()
     {
-        if (waMa.IsWater(transform.position))
+        if (waterManager.IsWater(transform.position))
         {
             return 1;
         }
 
-        if (waMa.IsDam(transform.position))
+        if (waterManager.IsDam(transform.position))
         {
             return 2;
         }
@@ -76,13 +69,13 @@ public class Human : Core
 
     private void destroying()
     {
-        waMa.RemoveDam(transform.position);
+        waterManager.RemoveDam(transform.position);
         InteractEnd();
     }
 
     private void Setting()
     {
-        waMa.SetDam(transform.position);
+        waterManager.SetDam(transform.position);
         InteractEnd();
     }
 }

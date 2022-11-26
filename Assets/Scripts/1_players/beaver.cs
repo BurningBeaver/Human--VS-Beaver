@@ -7,19 +7,17 @@ public class Beaver : Core
     [SerializeField]
     int gageCount, goalGage;
     // Start is called before the first frame update
-    void Start()
-    {
-        waMa = FindObjectOfType<WaterManager>();
-    }
+   
 
     protected override void InterActCheck()
     {
         if (Input.GetKeyDown(interActionKey))
         {
-            if (!isInteracting && waMa.IsDam(transform.position) && waMa.IsDam(transform.position))
+            if (!isInteracting && waterManager.IsWater(transform.position) && !waterManager.IsDam(transform.position))
             {
                 isInteracting = true;
             }
+            
             if (isInteracting)
                 gageUp();
         }
@@ -32,7 +30,7 @@ public class Beaver : Core
     }
     private void Setting()
     {
-        waMa.SetDam(transform.position);
+        waterManager.SetDam(transform.position);
         InteractEnd();
     }
 }

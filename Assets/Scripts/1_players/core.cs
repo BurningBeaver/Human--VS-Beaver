@@ -8,24 +8,23 @@ public abstract class Core : MonoBehaviour
 {
     private SpriteRenderer _spriteRenderer;
     protected Animator animator;
-    protected WaterManager waMa;
+    protected WaterManager waterManager;
 
 
-    [Header("조작키")] 
-    [SerializeField] protected KeyCode interActionKey;
+    [Header("조작키")] [SerializeField] protected KeyCode interActionKey;
     [SerializeField] protected KeyCode upKey;
     [SerializeField] protected KeyCode downKey;
     [SerializeField] protected KeyCode leftKey;
     [SerializeField] protected KeyCode rightKey;
 
-    [Header("값")] 
-    [SerializeField] protected float moveSpeed;
+    [Header("값")] [SerializeField] protected float moveSpeed;
 
     [SerializeField] bool keyItemHave, over;
     protected bool isInteracting = false; //, gageCount;
 
     private void Awake()
     {
+        waterManager = FindObjectOfType<WaterManager>();
         animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
