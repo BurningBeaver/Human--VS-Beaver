@@ -14,6 +14,11 @@ public class Beaver : Core
     private void Start()
     {
         gameManager.SetWoodCount(keyItemCount, maxItemCount);
+        upKey = InputManager.Instance.GetPlayer2InputCode(PlayerInput.MoveUp);
+        leftKey = InputManager.Instance.GetPlayer2InputCode(PlayerInput.MoveLeft);
+        downKey = InputManager.Instance.GetPlayer2InputCode(PlayerInput.MoveDown);
+        rightKey = InputManager.Instance.GetPlayer2InputCode(PlayerInput.MoveRight);
+        interActionKey = InputManager.Instance.GetPlayer2InputCode(PlayerInput.Action);
     }
 
     protected override void Update()

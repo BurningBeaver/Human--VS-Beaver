@@ -23,6 +23,15 @@ public class Human : Core
     public GameObject waterEffect;
     public GameObject damRemoveEffect;
 
+    private void Start()
+    {
+        upKey = InputManager.Instance.GetPlayer1InputCode(PlayerInput.MoveUp);
+        leftKey = InputManager.Instance.GetPlayer1InputCode(PlayerInput.MoveLeft);
+        downKey = InputManager.Instance.GetPlayer1InputCode(PlayerInput.MoveDown);
+        rightKey = InputManager.Instance.GetPlayer1InputCode(PlayerInput.MoveRight);
+        interActionKey = InputManager.Instance.GetPlayer1InputCode(PlayerInput.Action);
+    }
+
     private IEnumerator BreakWait()
     {
         cantInteractWithRiver = true;
