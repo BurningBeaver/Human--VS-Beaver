@@ -20,7 +20,7 @@ public abstract class Core : MonoBehaviour
     [Header("값")] [SerializeField] protected float moveSpeed;
 
     [SerializeField] bool keyItemHave, over;
-    [SerializeField]protected bool isInteracting = false; //, gageCount;
+    [SerializeField] protected bool isInteracting = false; //, gageCount;
 
     private void Awake()
     {
