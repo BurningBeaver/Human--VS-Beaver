@@ -55,9 +55,14 @@ public abstract class Core : MonoBehaviour
         var movePosition = GetDirection() * (moveSpeed * Time.deltaTime);
 
         //이동 기능
-        if (!isInteracting && !over)
+        if (!isInteracting && !over && movePosition.magnitude != 0)
         {
             transform.Translate(movePosition);
+            GetComponent<Animator>().SetBool("is_move", true);
+        }
+        else
+        {
+            GetComponent<Animator>().SetBool("is_move", false);
         }
 
         //방향 제어
