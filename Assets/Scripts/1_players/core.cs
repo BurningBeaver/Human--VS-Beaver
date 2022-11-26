@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class core : MonoBehaviour
+public class Core : MonoBehaviour
 {
     protected WaterManager waMa;
     //[SerializeField]

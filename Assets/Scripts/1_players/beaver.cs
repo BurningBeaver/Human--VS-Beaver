@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class beaverInteract : core
+public class Beaver : Core
 {
     [SerializeField]
     int gageCount, goalGage;

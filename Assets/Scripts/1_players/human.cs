@@ -2,21 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class human : core
+public class Human : Core
 {
     [SerializeField]
     int gageCount, goalGage, WDH;
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         waMa = FindObjectOfType<WaterManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public override void InterActCheck()
     {
         if (Input.GetKeyDown(interAct))
@@ -28,7 +22,7 @@ public class human : core
                     WDH = 1;
                 else if (waMa.IsDam(transform.position))
                     WDH = 2;
-                //else if(ÁýÀÌ¸é 3)
+                //else if(ï¿½ï¿½ï¿½Ì¸ï¿½ 3)
                 else
                     WDH = 0;
                 if (WDH != 0)
