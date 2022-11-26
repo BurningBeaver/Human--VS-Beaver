@@ -14,7 +14,8 @@ public class TreeGeneration : MonoBehaviour
     {
         float x = Random.Range(.5f, 3.7f);
         float y = Random.Range(.5f, 3.7f);
-        Instantiate(branch, transform.position, transform.rotation);
+        Vector2 spot = Random.insideUnitCircle * 5f;
+        Instantiate(branch, spot, transform.rotation);
         StartCoroutine(wait());
     }
     IEnumerator wait()

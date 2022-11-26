@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Linq;
+using System.Collections;
 using Random = UnityEngine.Random;
 
 public class Human : Core
@@ -8,7 +9,14 @@ public class Human : Core
     private static readonly int IsPickOnWater = Animator.StringToHash("is_pick_on_water");
     [Header("범위")] [SerializeField] private float bucketRange;
     [SerializeField] int gageCount, goalGage, WDH;
+    bool cantInteractWithRiver;
 
+    IEnumerator BreakWait()
+    {
+        cantInteractWithRiver = true;
+        yield return new WaitForSeconds(.5f);
+        cantInteractWithRiver = false;
+    }
     protected override void InterActCheck()
     {
         if (Input.GetKeyDown(interActionKey))
@@ -37,12 +45,12 @@ public class Human : Core
 
     private int GetTile()
     {
-        if (waterManager.IsWater(transform.position) && !GetKeyItem())
+        if (waterManager.IsWater(transform.position) && !GetKeyItem() && !cantInteractWithRiver)
         {
             return 1;
         }
 
-        if (waterManager.IsDam(transform.position))
+        if (waterManager.IsDam(transform.position) && !cantInteractWithRiver)
         {
             return 2;
         }
@@ -90,6 +98,7 @@ public class Human : Core
     {
         waterManager.RemoveDam(transform.position);
         InteractEnd();
+        StartCoroutine(BreakWait());
     }
 
     private void pouring()
@@ -105,11 +114,13 @@ public class Human : Core
         InteractEnd();
         useItem();
     }
-   /* public override void InteractEnd()
-    {
-        base.InteractEnd();
-        WDH = 0;
-    }*/
+
+
+    /* public override void InteractEnd()
+     {
+         base.InteractEnd();
+         WDH = 0;
+     }*/
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()
