@@ -225,6 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _houses: []
+  maxTimer: 10
   timerText: {fileID: 1989681783}
   timerColor:
     serializedVersion: 2
@@ -13704,7 +13705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p1: {fileID: 1350512468}
   p2: {fileID: 179946538}
-  scale: 0.65
+  scale: 0.6
   min: 5
   max: 30
 --- !u!1001 &5541714693222048716
