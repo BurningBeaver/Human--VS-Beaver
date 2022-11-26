@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
@@ -81,19 +82,19 @@ public class SoundManager : MonoBehaviour
     {
         sfxSource.PlayOneShot(sfxClips[key]);
     }
-    public void SetBGMVolume(float value)
+    public void SetBGMVolume(Slider slider)
     {
-        bgmVolume = value;
+        bgmVolume = slider.value;
         bgmSource.volume = masterVolume * bgmVolume;
     }
-    public void SetSFXVolume(float value)
+    public void SetSFXVolume(Slider slider)
     {
-        sfxVolume = value;
+        sfxVolume = slider.value;
         sfxSource.volume = masterVolume * sfxVolume;
     }
-    public void SetMasterVolume(float value)
+    public void SetMasterVolume(Slider slider)
     {
-        masterVolume = value;
+        masterVolume = slider.value;
         bgmSource.volume = masterVolume * bgmVolume;
         sfxSource.volume = masterVolume * sfxVolume;
     }
