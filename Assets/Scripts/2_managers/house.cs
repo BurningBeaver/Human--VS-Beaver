@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class house : MonoBehaviour
 {
+    [SerializeField]
+    GameObject effect;
     int Gage, GoalGage;
     bool onFire;
+    private void Awake()
+    {
+        onFire = true;
+    }
     public bool GetStat()
     {
         return onFire;
@@ -14,6 +20,9 @@ public class house : MonoBehaviour
     {
         Gage++;
         if (Gage >= GoalGage)
+        {
+            effect.SetActive(false);
             onFire = false;
+        }
     }
 }
