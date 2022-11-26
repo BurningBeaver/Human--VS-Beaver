@@ -1,4 +1,4 @@
-
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,12 +6,15 @@ using System.Linq;
 
 public class Beaver : Core
 {
-    [SerializeField]
-    int gageCount, goalGage;
-    [SerializeField]
-    float handLength;
+    [SerializeField] int gageCount, goalGage;
+    [SerializeField] float handLength;
     [SerializeField] int keyItemCount, maxItemCount;
     public GameObject damCreateEffect;
+
+    private void Start()
+    {
+        gameManager.SetWoodCount(keyItemCount, maxItemCount);
+    }
 
     protected override void Update()
     {
@@ -33,7 +36,8 @@ public class Beaver : Core
     {
         if (Input.GetKeyDown(interActionKey))
         {
-            if (!isInteracting && waterManager.IsWater(transform.position) && !waterManager.IsDam(transform.position) && KeyItemHave())
+            if (!isInteracting && waterManager.IsWater(transform.position) && !waterManager.IsDam(transform.position) &&
+                KeyItemHave())
             {
                 isInteracting = true;
             }
@@ -42,6 +46,7 @@ public class Beaver : Core
                 gageUp();
         }
     }
+
     private void gageUp()
     {
         gageCount++;
@@ -49,6 +54,7 @@ public class Beaver : Core
         if (goalGage <= gageCount)
             Setting();
     }
+
     private void Setting()
     {
         Instantiate(damCreateEffect, transform.position, Quaternion.identity);
@@ -58,27 +64,34 @@ public class Beaver : Core
         waterManager.SetDam(transform.position);
         InteractEnd();
     }
+
     public override void InteractEnd()
     {
         base.InteractEnd();
         UseItem();
     }
+
     public override void itemGet()
     {
         keyItemCount++;
+        gameManager.SetWoodCount(keyItemCount, maxItemCount);
         animator.SetInteger("item_count", keyItemCount);
     }
+
     public void UseItem()
     {
         keyItemCount--;
+        gameManager.SetWoodCount(keyItemCount, maxItemCount);
         animator.SetInteger("item_count", keyItemCount);
     }
+
     public bool KeyItemHave()
     {
         if (keyItemCount > 0)
             return true;
         return false;
     }
+
     public bool KeyItemNotFULL()
     {
         if (keyItemCount <= maxItemCount)

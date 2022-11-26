@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float maxTimer = 10;
 
     [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private TextMeshProUGUI woodCountText;
+
     [SerializeField] private Gradient timerColor;
     [SerializeField] private Image timerImage;
     [SerializeField] private Image fadeImage;
@@ -65,5 +67,10 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene("3-1_Beaver Win");
             }
         });
+    }
+
+    public void SetWoodCount(int count, int keyItemCount)
+    {
+        woodCountText.text = $"{count}/{keyItemCount}";
     }
 }
