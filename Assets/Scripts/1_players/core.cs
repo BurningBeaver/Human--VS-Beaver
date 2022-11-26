@@ -90,4 +90,9 @@ public abstract class Core : MonoBehaviour
     {
         over = true;
     }
+
+    protected bool GetKeyItem()
+    {
+        return keyItemHave;
+    }
 }

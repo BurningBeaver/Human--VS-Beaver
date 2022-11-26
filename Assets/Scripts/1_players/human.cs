@@ -35,7 +35,7 @@ public class Human : Core
 
     private int GetTile()
     {
-        if (waterManager.IsWater(transform.position))
+        if (waterManager.IsWater(transform.position)&&!GetKeyItem())
         {
             return 1;
         }
@@ -44,6 +44,9 @@ public class Human : Core
         {
             return 2;
         }
+
+        //if(매니저에서 집에 닿았는지 확인)
+        //return 3
 
         return 0;
     }
@@ -63,7 +66,7 @@ public class Human : Core
             else if (WDH == 2)
                 destroying();
             else
-                Setting();
+                pouring();
         }
     }
 
@@ -73,9 +76,10 @@ public class Human : Core
         InteractEnd();
     }
 
-    private void Setting()
+    private void pouring()
     {
-        waterManager.SetDam(transform.position);
+        //지정된 집의 gagedown
+        animator.SetBool(IsPickOnWater, false);
         InteractEnd();
     }
 }
