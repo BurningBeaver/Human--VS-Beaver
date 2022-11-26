@@ -1,38 +1,76 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class Core : MonoBehaviour
+public abstract class Core : MonoBehaviour
 {
+    private SpriteRenderer _spriteRenderer;
+    protected Animator animator;
     protected WaterManager waMa;
-    //[SerializeField]
-    //GameObject interactingObject;
-    public KeyCode interAct, up, down, left, right;
-    [SerializeField]
-    float mSpeed;
-    bool keyItemHave, over;
-    protected bool isInteracting;//, gageCount;
 
-    public void MoveCheck()
+
+    [Header("조작키")] 
+    [SerializeField] protected KeyCode interActionKey;
+    [SerializeField] protected KeyCode upKey;
+    [SerializeField] protected KeyCode downKey;
+    [SerializeField] protected KeyCode leftKey;
+    [SerializeField] protected KeyCode rightKey;
+
+    [Header("값")] 
+    [SerializeField] protected float moveSpeed;
+
+    [SerializeField] bool keyItemHave, over;
+    protected bool isInteracting = false; //, gageCount;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+
+    private Vector2 GetDirection()
     {
         float x = 0, y = 0;
-        if (Input.GetKey(up))
+        if (Input.GetKey(upKey))
             y = 1;
-        if (Input.GetKey(down))
+        if (Input.GetKey(downKey))
             y = -1;
 
-        if (Input.GetKey(left))
+        if (Input.GetKey(leftKey))
             x = -1;
-        if (Input.GetKey(right))
+        if (Input.GetKey(rightKey))
             x = 1;
-        if (isInteracting && !over)
-            transform.Translate(new Vector2(x * mSpeed, y * mSpeed));
+        return new Vector2(x, y).normalized;
     }
 
-    public virtual void InterActCheck()
+    private void Update()
     {
+        if (Input.GetKeyDown(interActionKey))
+        {
+            InterActCheck();
+        }
 
+        var movePosition = GetDirection() * (moveSpeed * Time.deltaTime);
+
+        //이동 기능
+        if (!isInteracting && !over)
+        {
+            transform.Translate(movePosition);
+        }
+
+        //방향 제어
+        if (movePosition.x != 0)
+        {
+            var isRightMove = movePosition.x < 0 ? true : false;
+            _spriteRenderer.flipX = isRightMove;
+        }
     }
+
+    protected abstract void InterActCheck();
+
     public void InteractEnd()
     {
         isInteracting = false;
@@ -48,23 +86,4 @@ public class Core : MonoBehaviour
     {
         over = true;
     }
-    /* public void InteractStart(GameObject inter)
-     {
-         interactingObject = inter;
-         InteractGageUp();
-     }
-     public void InteractGageUp()
-     {
-         gageCount++;
-         if (gageCount >= 10)
-         {
-             gageCount = 0;
-             interactingObject = null;
-             InteractEnd();
-         }
-     }
-     public virtual void InteractEnd()
-     {
-
-     }*/
 }

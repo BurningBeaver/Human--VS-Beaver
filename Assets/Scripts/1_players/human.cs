@@ -4,34 +4,57 @@ using UnityEngine;
 
 public class Human : Core
 {
-    [SerializeField]
-    int gageCount, goalGage, WDH;
+    private static readonly int IsPickOnWater = Animator.StringToHash("is_pick_on_water");
+
+    
+    [SerializeField] int gageCount, goalGage, WDH;
+
     private void Start()
     {
         waMa = FindObjectOfType<WaterManager>();
     }
 
-    public override void InterActCheck()
+    protected override void InterActCheck()
     {
-        if (Input.GetKeyDown(interAct))
+        if (Input.GetKeyDown(interActionKey))
         {
-            base.InterActCheck();
             if (!isInteracting)
             {
-                if (waMa.IsWater(transform.position))
-                    WDH = 1;
-                else if (waMa.IsDam(transform.position))
-                    WDH = 2;
-                //else if(���̸� 3)
-                else
-                    WDH = 0;
+                WDH = GetTile();
+
                 if (WDH != 0)
                     isInteracting = true;
             }
-            if (isInteracting)
+            else
+            {
+                if (WDH != GetTile())
+                {
+                    Debug.Log(1);
+
+                    isInteracting = false;
+                    gageCount = 0;
+                }
+
                 gageUp();
+            }
         }
     }
+
+    private int GetTile()
+    {
+        if (waMa.IsWater(transform.position))
+        {
+            return 1;
+        }
+
+        if (waMa.IsDam(transform.position))
+        {
+            return 2;
+        }
+
+        return 0;
+    }
+
     private void gageUp()
     {
         gageCount++;
@@ -39,6 +62,8 @@ public class Human : Core
         {
             if (WDH == 1)
             {
+                Debug.Log("물 획득");
+                animator.SetBool(IsPickOnWater, true);
                 itemGet();
                 InteractEnd();
             }
@@ -48,11 +73,13 @@ public class Human : Core
                 Setting();
         }
     }
+
     private void destroying()
     {
         waMa.RemoveDam(transform.position);
         InteractEnd();
     }
+
     private void Setting()
     {
         waMa.SetDam(transform.position);

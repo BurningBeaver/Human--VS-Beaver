@@ -12,16 +12,10 @@ public class Beaver : Core
         waMa = FindObjectOfType<WaterManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void InterActCheck()
     {
-
-    }
-    public override void InterActCheck()
-    {
-        if (Input.GetKeyDown(interAct))
+        if (Input.GetKeyDown(interActionKey))
         {
-            base.InterActCheck();
             if (!isInteracting && waMa.IsDam(transform.position) && waMa.IsDam(transform.position))
             {
                 isInteracting = true;

@@ -61,7 +61,6 @@ public class WaterManager : MonoBehaviour
         while (queue.Count > 0)
         {
             var temp = queue.Dequeue();
-            Debug.Log(temp);
             waterLoadTilemap.SetTile(temp, waterLoadAllowTile);
 
             foreach (var dir in dirs)
