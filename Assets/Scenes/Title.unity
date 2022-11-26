@@ -319,7 +319,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -38.59}
+  m_AnchoredPosition: {x: 0, y: -38.589996}
   m_SizeDelta: {x: 160, y: 29.88}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &138646540
@@ -866,6 +866,7 @@ GameObject:
   m_Component:
   - component: {fileID: 485443065}
   - component: {fileID: 485443064}
+  - component: {fileID: 485443066}
   - component: {fileID: 485443063}
   - component: {fileID: 485443062}
   m_Layer: 5
@@ -959,6 +960,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &485443066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485443061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75036a99ced803d48a9c51a0d2f83701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  start: 0
+  duration: 1
+  curve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &582963363
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,7 +1015,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 49.300003, y: 10.69}
+  m_AnchoredPosition: {x: 49.300003, y: 10.689999}
   m_SizeDelta: {x: 76.99, y: 50.65}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &582963365
@@ -1711,7 +1732,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -24.78}
+  m_AnchoredPosition: {x: 0, y: -24.779999}
   m_SizeDelta: {x: 160, y: 28.11}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1346186828
@@ -2430,7 +2451,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 10.9, y: -8.36}
+  m_AnchoredPosition: {x: 10.900002, y: -8.360001}
   m_SizeDelta: {x: 32, y: 47.81}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1548250657
@@ -3210,6 +3231,7 @@ GameObject:
   - component: {fileID: 2118420354}
   - component: {fileID: 2118420353}
   - component: {fileID: 2118420352}
+  - component: {fileID: 2118420355}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3283,6 +3305,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2118420355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118420351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75036a99ced803d48a9c51a0d2f83701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  start: 0
+  duration: 1
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0014372319
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.17478509
+      value: 0.235672
+      inSlope: -0.39262265
+      outSlope: -0.39262265
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.08680554
+    - serializedVersion: 3
+      time: 0.99999994
+      value: -0.0023584887
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2126571716
 GameObject:
   m_ObjectHideFlags: 0
