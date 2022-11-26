@@ -58,7 +58,7 @@ MonoBehaviour:
   handLength: 0
   keyItemCount: 0
   maxItemCount: 0
-  grassEffect: {fileID: 3092956848885201592, guid: fa0ffa22f75294d37be57fbd3512bc5d, type: 3}
+  damCreateEffect: {fileID: 7881068726964103850, guid: 877de1572027a4a9e9b2af0e1b4994da, type: 3}
 --- !u!212 &6628448294206011406
 SpriteRenderer:
   m_ObjectHideFlags: 0

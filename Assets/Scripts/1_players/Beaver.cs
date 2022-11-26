@@ -11,6 +11,8 @@ public class Beaver : Core
     [SerializeField]
     float handLength;
     [SerializeField] int keyItemCount, maxItemCount;
+    public GameObject damCreateEffect;
+
     protected override void Update()
     {
         base.Update();
@@ -48,6 +50,8 @@ public class Beaver : Core
     }
     private void Setting()
     {
+        Instantiate(damCreateEffect, transform.position, Quaternion.identity);
+
         gageCount = 0;
         SoundManager.Instance.PlaySFX("DamCreate");
         waterManager.SetDam(transform.position);
