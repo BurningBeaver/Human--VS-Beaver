@@ -10,6 +10,7 @@ public class Beaver : Core
     [SerializeField]
     float handLength;
     [SerializeField] int keyItemCount, maxItemCount;
+    public GameObject grassEffect;
     protected override void Update()
     {
         base.Update();
@@ -47,6 +48,7 @@ public class Beaver : Core
     }
     private void Setting()
     {
+        SoundManager.Instance.PlaySFX("DamCreate");
         waterManager.SetDam(transform.position);
         InteractEnd();
     }
@@ -58,6 +60,9 @@ public class Beaver : Core
     public override void itemGet()
     {
         keyItemCount++;
+        Instantiate(grassEffect, transform.position, Quaternion.identity);
+        
+
         animator.SetInteger("item_count", keyItemCount);
     }
     public void UseItem()
