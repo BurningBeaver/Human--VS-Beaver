@@ -306,7 +306,7 @@ MonoBehaviour:
   tilemap: {fileID: 1590266212}
   waterLoadTilemap: {fileID: 1297379148}
   damTilemap: {fileID: 2054850373}
-  waterLoadAllowTile: {fileID: 11400000, guid: b95f4ed31e060442999d540a07438359, type: 2}
+  waterLoadAllowTile: {fileID: 11400000, guid: 9eb6880a443e94253bbdc5b52fa3e1d3, type: 2}
   waterTile: {fileID: 11400000, guid: 48ff3f9b7b9b742aaab784ee0ef060fd, type: 2}
   damTile: {fileID: 11400000, guid: dc937760f7ce24e72b099c25132c5e75, type: 2}
 --- !u!1 &1590266209
