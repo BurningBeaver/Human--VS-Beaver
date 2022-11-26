@@ -37,7 +37,18 @@ public class Human : Core
                 WDH = GetTile();
                 Debug.Log(WDH);
                 if (WDH != 0)
+                {
                     isInteracting = true;
+                    switch (WDH)
+                    {
+                        case TileInteraction.WaterGetting:
+                            break;
+                        case TileInteraction.DamDestroying:
+                            break;
+                        case TileInteraction.Pouring:
+                            break;
+                    }
+                }
             }
             else
             {
@@ -83,6 +94,10 @@ public class Human : Core
     private void GageUp()
     {
         gageCount++;
+        if (WDH == TileInteraction.DamDestroying)
+        {
+            animator.SetTrigger("Destroy");
+        }
         if (WDH == TileInteraction.Pouring)
         {
             Pouring();
@@ -99,6 +114,7 @@ public class Human : Core
                 Instantiate(waterEffect, transform.position, Quaternion.identity);
                 SoundManager.Instance.PlaySFX("WaterFill");
                 Debug.Log("물 획득");
+                animator.SetTrigger("Bucket");
                 animator.SetBool(IsPickOnWater, true);
                 itemGet();
                 InteractEnd();
@@ -126,6 +142,7 @@ public class Human : Core
             house.GetComponent<house>().GageUp();
         }
 
+        animator.SetTrigger("Bucket");
         animator.SetBool(IsPickOnWater, false);
         InteractEnd();
         UseItem();
