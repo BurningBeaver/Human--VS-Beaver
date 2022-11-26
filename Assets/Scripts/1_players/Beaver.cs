@@ -47,7 +47,6 @@ public class Beaver : Core
     }
     private void Setting()
     {
-        SoundManager.Instance.PlaySFX("DamCreate");
         waterManager.SetDam(transform.position);
         InteractEnd();
     }
