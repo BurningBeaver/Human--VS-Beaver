@@ -119,19 +119,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38933170d3e60b14ba064993c063c928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interActionKey: 304
+  interActionKey: 102
   upKey: 119
   downKey: 115
   leftKey: 97
   rightKey: 100
   moveSpeed: 5
-  keyItemHave: 0
-  over: 0
-  isInteracting: 0
   bucketRange: 0
   gageCount: 0
   goalGage: 5
   WDH: 0
+  waterEffect: {fileID: 7881068726964103850, guid: 91b69f2bef04b498b943eaa3efb2c99f, type: 3}
 --- !u!1 &8189149020042220209
 GameObject:
   m_ObjectHideFlags: 0
