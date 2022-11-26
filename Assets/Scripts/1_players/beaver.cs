@@ -9,7 +9,7 @@ public class Beaver : Core
     int gageCount, goalGage;
     [SerializeField]
     float handLength;
-    int keyItemCount, maxItemCount;
+    [SerializeField] int keyItemCount, maxItemCount;
     protected override void Update()
     {
         base.Update();
@@ -64,7 +64,7 @@ public class Beaver : Core
     }
     public bool GetKeyItem()
     {
-        if (keyItemCount > 0 && keyItemCount < maxItemCount)
+        if (keyItemCount > 0 && keyItemCount <= maxItemCount)
             return true;
         return false;
     }
