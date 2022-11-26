@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: Dam
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 7482667652216324306, guid: a6d5fceea67554d4799ed1d065fc305d, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 8a9170365597d43609e369ec22d02940, type: 3}
   m_Color: {r: 0.6698113, g: 0.17311299, b: 0, a: 1}
   m_Transform:
     e00: 1
