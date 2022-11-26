@@ -28,7 +28,7 @@ public class Beaver : Core
     {
         if (Input.GetKeyDown(interActionKey))
         {
-            if (!isInteracting && waterManager.IsWater(transform.position) && !waterManager.IsDam(transform.position))
+            if (!isInteracting && waterManager.IsWater(transform.position) && !waterManager.IsDam(transform.position)&&GetKeyItem())
             {
                 isInteracting = true;
             }

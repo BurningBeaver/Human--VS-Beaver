@@ -37,7 +37,7 @@ public class Human : Core
 
     private int GetTile()
     {
-        if (waterManager.IsWater(transform.position))
+        if (waterManager.IsWater(transform.position) && !GetKeyItem())
         {
             return 1;
         }
