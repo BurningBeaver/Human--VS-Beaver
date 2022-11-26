@@ -7,7 +7,7 @@ public class house : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     [SerializeField] private Color burningColor;
     [SerializeField] int Gage, GoalGage;
-
+    [SerializeField] private GameObject waterEffect;
     public bool onFire
     {
         get => Gage >= GoalGage;
@@ -41,6 +41,8 @@ public class house : MonoBehaviour
         {
             _spriteRenderer.color = Color.white;
             effect.SetActive(false);
+            waterEffect.SetActive(true);
+            _spriteRenderer.DOColor(Color.white, 1).From(Color.blue);
             FindObjectOfType<GameManager>().CheckHumanGameWin();
         }
     }

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Waterfall
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: -1417515347, guid: 9cfe9e7c1c7e64c9ea6c6e78322ef501, type: 3}
-  - {fileID: 1727702172, guid: 9cfe9e7c1c7e64c9ea6c6e78322ef501, type: 3}
-  - {fileID: -1775445797, guid: 9cfe9e7c1c7e64c9ea6c6e78322ef501, type: 3}
-  - {fileID: -776156448, guid: 9cfe9e7c1c7e64c9ea6c6e78322ef501, type: 3}
+  - {fileID: -1209398904, guid: 8f23cd41fb9134907b0aacef982e9aa9, type: 3}
+  - {fileID: -407744623, guid: 8f23cd41fb9134907b0aacef982e9aa9, type: 3}
+  - {fileID: 1081689422, guid: 8f23cd41fb9134907b0aacef982e9aa9, type: 3}
+  - {fileID: 1226230956, guid: 8f23cd41fb9134907b0aacef982e9aa9, type: 3}
   m_MinSpeed: 8
   m_MaxSpeed: 8
   m_AnimationStartTime: 0
