@@ -4,10 +4,41 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public AudioSource music;
+    public static SoundManager instance = null;
+
+    public AudioSource musicaudio;  //배경음악
+    public AudioSource effectaudio; //효과음
+
+    public AudioClip clickSfx;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            if (instance != this)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+    }
 
     public void SetMusic(float volume)
     {
-        music.volume = volume;
+        musicaudio.volume = volume;
+    }
+
+    public void SetEffect(float volume)
+    {
+        effectaudio.volume = volume;
+    }
+
+    public void PlayEffectSound(string name)
+    {
+        effectaudio.PlayOneShot(Resources.Load<AudioClip>(name));
     }
 }
