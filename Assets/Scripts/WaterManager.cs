@@ -39,15 +39,12 @@ public class WaterManager : MonoBehaviour
                 if (tile != waterTile)
                 {
                     tiles.Add(vector3Int, tile);
-
-                    waterLoadTilemap.SetTile(vector3Int, waterLoadAllowTile);
-                    waterLoadTilemap.SetColor(vector3Int, Color.blue);
-                    Debug.Log("x:" + x + " y:" + y + " tile:" + tile.name);
                 }
             }
         }
 
         maxY = tiles.Max(t => t.Key.y);
+        ReloadWaterLoad();
     }
 
     private void ReloadWaterLoad()
@@ -64,6 +61,7 @@ public class WaterManager : MonoBehaviour
         while (queue.Count > 0)
         {
             var temp = queue.Dequeue();
+            Debug.Log(temp);
             waterLoadTilemap.SetTile(temp, waterLoadAllowTile);
 
             foreach (var dir in dirs)
