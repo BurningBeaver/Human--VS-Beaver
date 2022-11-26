@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,17 +6,23 @@ using UnityEngine.UI;
 
 public class BlinkAnim : MonoBehaviour
 {
-    float time;
+    private Graphic graphic;
+    private float time;
 
-    void Update()
+    private void Awake()
+    {
+        graphic = GetComponent<Graphic>();
+    }
+
+    private void Update()
     {
         if (time < 0.5f)
         {
-            GetComponent<Image>().color = new Color(1,1,1,1-time);
+            graphic.color = new Color(1,1,1,1-time);
         }
         else
         {
-            GetComponent<Image>().color = new Color(1,1,1,time);
+            graphic.color = new Color(1,1,1,time);
             if (time > 1f)
             {
                 time = 0;

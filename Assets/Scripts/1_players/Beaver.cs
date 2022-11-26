@@ -21,14 +21,13 @@ public class Beaver : Core
         base.Update();
         if (KeyItemNotFULL())
         {
-            print("itemgettinhg");
             var woods = Physics2D.OverlapCircleAll(transform.position, handLength).Where(p => p.CompareTag("Wood"));
-            if (woods != null)
-                foreach (var w in woods)
-                {
-                    w.gameObject.SetActive(false);
-                    itemGet();
-                }
+            foreach (var w in woods)
+            {
+                w.gameObject.SetActive(false);
+                itemGet();
+            }
+
         }
     }
 

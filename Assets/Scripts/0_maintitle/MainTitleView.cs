@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -10,12 +11,9 @@ public class MainTitleView : MonoBehaviour
     public GameObject Option;
     public Image fadeImage;
 
-    private void Awake()
-    {
-    }
-
     private void Start()
     {
+        SoundManager.Instance.PlayBGM("TitleBGM");
     }
 
     public void StartGame()
@@ -27,11 +25,13 @@ public class MainTitleView : MonoBehaviour
 
     public void OptionOn()
     {
+        SoundManager.Instance.PlaySFX("ClickSfx");
         Option.SetActive(true);
     }
 
     public void OptionOff()
     {
+        SoundManager.Instance.PlaySFX("ClickSfx");
         Option.SetActive(false);
     }
 }

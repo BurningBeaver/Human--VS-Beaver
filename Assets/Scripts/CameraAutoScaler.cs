@@ -22,6 +22,7 @@ public class CameraAutoScaler : MonoBehaviour
         {
             isZoomIn = false;
         });
+        SoundManager.Instance.PlayBGM("IngameBGM");
     }
 
     private void LateUpdate()

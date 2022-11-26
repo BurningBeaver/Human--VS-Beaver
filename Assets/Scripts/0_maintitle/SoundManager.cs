@@ -1,12 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
- public const string BGM_PATH = "Sound/BGM/";
+    public const string BGM_PATH = "Sound/Music/";
     public const string SFX_PATH = "Sound/SFX/";
 
     private AudioSource bgmSource;
@@ -45,8 +43,11 @@ public class SoundManager : MonoBehaviour
                 instance = gameObject.AddComponent<SoundManager>();
                 instance.bgmSource = gameObject.AddComponent<AudioSource>();
                 instance.sfxSource = gameObject.AddComponent<AudioSource>();
-                instance.bgmSource.volume = 0.5f;
-                instance.sfxSource.volume = 0.5f;
+                instance.bgmVolume
+                    = instance.bgmSource.volume
+                        = instance.sfxVolume
+                            = instance.sfxSource.volume
+                                = 0.5f;
 
                 instance.bgmClips = Resources.LoadAll<AudioClip>(BGM_PATH).ToDictionary(p => p.name);
 #if UNITY_EDITOR
@@ -82,19 +83,22 @@ public class SoundManager : MonoBehaviour
     {
         sfxSource.PlayOneShot(sfxClips[key]);
     }
-    public void SetBGMVolume(Slider slider)
+
+    public void SetBGMVolume(float value)
     {
-        bgmVolume = slider.value;
+        bgmVolume = value;
         bgmSource.volume = masterVolume * bgmVolume;
     }
-    public void SetSFXVolume(Slider slider)
+
+    public void SetSFXVolume(float value)
     {
-        sfxVolume = slider.value;
+        sfxVolume = value;
         sfxSource.volume = masterVolume * sfxVolume;
     }
-    public void SetMasterVolume(Slider slider)
+
+    public void SetMasterVolume(float value)
     {
-        masterVolume = slider.value;
+        masterVolume = value;
         bgmSource.volume = masterVolume * bgmVolume;
         sfxSource.volume = masterVolume * sfxVolume;
     }
