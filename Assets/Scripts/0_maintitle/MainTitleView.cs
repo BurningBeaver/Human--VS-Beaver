@@ -5,8 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class MainTitleView : MonoBehaviour
 {
+   
     public GameObject Option;
-    
+
+    private void Awake()
+    {
+
+    }
+    private void Start()
+    {
+    }
+
     public void StartGame()
     {
         SceneManager.LoadScene("1_MainTitle");
