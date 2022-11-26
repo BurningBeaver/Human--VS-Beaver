@@ -12,6 +12,7 @@ public class KeySettingButton : MonoBehaviour
     public KeyCode KeyCode { get; set; }
 
     private TextMeshProUGUI text;
+    private Graphic graphic;
     public Button Button { get; private set; }
 
     private readonly Dictionary<KeyCode, string> keyCodeStringDict = new()
@@ -27,8 +28,17 @@ public class KeySettingButton : MonoBehaviour
     private void Awake()
     {
         Button = GetComponent<Button>();
+        graphic = GetComponent<Graphic>();
         text = GetComponentInChildren<TextMeshProUGUI>();
         SetText();
+    }
+
+    private void Update()
+    {
+        var trueWhite = Color.white;
+        var falseWhite = trueWhite;
+        falseWhite.a = 0.5f;
+        graphic.color = Input.GetKey(KeyCode) ? trueWhite : falseWhite;
     }
 
     public void SetText()

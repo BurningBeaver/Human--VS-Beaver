@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Gradient timerColor;
     [SerializeField] private Image timerImage;
     [SerializeField] private Image fadeImage;
+    [SerializeField] private List<KeySettingButton> p1GhostKey;
+    [SerializeField] private List<KeySettingButton> p2GhostKey;
+
     private bool isGamePlay;
 
     private void Awake()
@@ -30,6 +33,17 @@ public class GameManager : MonoBehaviour
         isGamePlay = true;
         _houses = FindObjectsOfType<house>().ToList();
         CheckHumanGameWin();
+
+        p1GhostKey.ForEach(keyButton =>
+        {
+            keyButton.KeyCode = InputManager.Instance.GetPlayer1InputCode(keyButton.InputAction);
+            keyButton.SetText();
+        });
+        p2GhostKey.ForEach(keyButton =>
+        {
+            keyButton.KeyCode = InputManager.Instance.GetPlayer2InputCode(keyButton.InputAction);
+            keyButton.SetText();
+        });
     }
 
     private void LateUpdate()
