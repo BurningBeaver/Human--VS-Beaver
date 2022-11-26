@@ -182,5 +182,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a7a043b36d3adb44b4e1ceee3842077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 15
+  waitTime: 1.5
   branch: {fileID: 7264658692934849335, guid: 7c06120c27b51aa4386f21ed61d92295, type: 3}

@@ -17,6 +17,7 @@ public class Human : Core
     private static readonly int IsPickOnWater = Animator.StringToHash("is_pick_on_water");
     [Header("범위")] [SerializeField] private float bucketRange;
     [SerializeField] int gageCount, goalGage;
+    [SerializeField] private int waterCount;
     private TileInteraction WDH;
     private bool cantInteractWithRiver;
     public GameObject waterEffect;
@@ -113,24 +114,25 @@ public class Human : Core
             isInteracting = false;
             gageCount = 0;
         }
-        else if (goalGage <= gageCount)
+
+        if (waterCount <= gageCount && WDH == TileInteraction.WaterGetting)
         {
             isInteracting = false;
             gageCount = 0;
-        
-            if (WDH == TileInteraction.WaterGetting)
-            {
-                Instantiate(waterEffect, transform.position, Quaternion.identity);
-              
-                Debug.Log("물 획득");
-                animator.SetBool(IsPickOnWater, true);
-                itemGet();
-                InteractEnd();
-            }
-            else if (WDH == TileInteraction.DamDestroying)
-            {
-                Destroying();
-            }
+
+            Instantiate(waterEffect, transform.position, Quaternion.identity);
+
+            Debug.Log("물 획득");
+            animator.SetBool(IsPickOnWater, true);
+            itemGet();
+            InteractEnd();
+        }
+
+        if (goalGage <= gageCount && WDH == TileInteraction.DamDestroying)
+        {
+            isInteracting = false;
+            gageCount = 0;
+            Destroying();
         }
     }
 
