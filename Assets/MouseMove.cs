@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class MouseMove : MonoBehaviour
@@ -12,8 +13,6 @@ public class MouseMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position +=
-            (Vector3)(10 * (Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized *
-            Time.deltaTime);
+        transform.DOLocalMove((Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition), Time.deltaTime).SetEase(Ease.InOutSine);
     }
 }
