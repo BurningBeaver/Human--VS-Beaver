@@ -260,12 +260,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38933170d3e60b14ba064993c063c928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interActionKey: 304
-  upKey: 119
-  downKey: 115
-  leftKey: 97
-  rightKey: 100
-  moveSpeed: 5
+  interActionKey: 0
+  upKey: 0
+  downKey: 0
+  leftKey: 0
+  rightKey: 0
+  moveSpeed: 0
   keyItemHave: 0
   over: 0
   gageCount: 0
