@@ -45,7 +45,7 @@ public abstract class Core : MonoBehaviour
         return new Vector2(x, y).normalized;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (Input.GetKeyDown(interActionKey))
         {

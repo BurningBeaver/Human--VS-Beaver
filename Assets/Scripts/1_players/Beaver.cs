@@ -1,13 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Beaver : Core
 {
     [SerializeField]
     int gageCount, goalGage;
-    // Start is called before the first frame update
-   
+    [SerializeField]
+    float handLength;
+    protected override void Update()
+    {
+        base.Update();
+        if (!GetKeyItem())
+        {
+            var woods = Physics2D.OverlapCircleAll(transform.position, handLength).Where(p => p.CompareTag("Wood"));
+            if (woods != null)
+                foreach (var w in woods)
+                {
+                    w.gameObject.SetActive(false);
+                    itemGet();
+                }
+        }
+    }
 
     protected override void InterActCheck()
     {
