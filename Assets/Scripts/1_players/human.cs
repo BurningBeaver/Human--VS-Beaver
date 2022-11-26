@@ -1,10 +1,12 @@
+using System;
 using UnityEngine;
 using System.Linq;
+using Random = UnityEngine.Random;
+
 public class Human : Core
 {
     private static readonly int IsPickOnWater = Animator.StringToHash("is_pick_on_water");
-
-
+    [Header("범위")] [SerializeField] private float bucketRange;
     [SerializeField] int gageCount, goalGage, WDH;
 
     protected override void InterActCheck()
@@ -14,12 +16,14 @@ public class Human : Core
             if (!isInteracting)
             {
                 WDH = GetTile();
-
+                Debug.Log(WDH);
                 if (WDH != 0)
                     isInteracting = true;
             }
             else
             {
+                gageUp();
+
                 if (WDH != GetTile())
                 {
                     Debug.Log(1);
@@ -27,15 +31,13 @@ public class Human : Core
                     isInteracting = false;
                     gageCount = 0;
                 }
-
-                gageUp();
             }
         }
     }
 
     private int GetTile()
     {
-        if (waterManager.IsWater(transform.position) && !GetKeyItem())
+        if (waterManager.IsWater(transform.position))
         {
             return 1;
         }
@@ -47,11 +49,13 @@ public class Human : Core
 
         if (GetKeyItem())
         {
-            var houses = Physics2D.OverlapCircleAll(transform.position, 5).Where(p => p.CompareTag("House")).ToArray();
+            var houses = Physics2D.OverlapCircleAll(transform.position, bucketRange).Where(p => p.CompareTag("House"))
+                .ToArray();
 
             if (houses.Length > 0)
                 return 3;
         }
+
         return 0;
     }
 
@@ -61,13 +65,17 @@ public class Human : Core
         if (WDH == 3)
         {
             pouring();
+            SoundManager.Instance.PlaySFX("WaterEmpty_" + Random.Range(0, 2));
+            isInteracting = false;
             gageCount = 0;
         }
         else if (goalGage <= gageCount)
         {
+            isInteracting = false;
             gageCount = 0;
             if (WDH == 1)
             {
+                SoundManager.Instance.PlaySFX("WaterFill");
                 Debug.Log("물 획득");
                 animator.SetBool(IsPickOnWater, true);
                 itemGet();
@@ -86,12 +94,21 @@ public class Human : Core
 
     private void pouring()
     {
-        var houses = Physics2D.OverlapCircleAll(transform.position, 5).Where(p => p.CompareTag("House")).ToArray();
+        var houses = Physics2D.OverlapCircleAll(transform.position, bucketRange).Where(p => p.CompareTag("House"))
+            .ToArray();
         foreach (var house in houses)
         {
             house.GetComponent<house>().GageUp();
         }
+
         animator.SetBool(IsPickOnWater, false);
         InteractEnd();
     }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, bucketRange);
+    }
+#endif
 }
