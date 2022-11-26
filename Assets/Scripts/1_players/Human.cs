@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 public class Human : Core
 {
+    bool keyItemHave;
     private static readonly int IsPickOnWater = Animator.StringToHash("is_pick_on_water");
     [Header("범위")] [SerializeField] private float bucketRange;
     [SerializeField] int gageCount, goalGage, WDH;
@@ -45,7 +46,7 @@ public class Human : Core
 
     private int GetTile()
     {
-        if (waterManager.IsWater(transform.position) && !GetKeyItem() && !cantInteractWithRiver)
+        if (waterManager.IsWater(transform.position) && !keyItemHave && !cantInteractWithRiver)
         {
             return 1;
         }
@@ -55,7 +56,7 @@ public class Human : Core
             return 2;
         }
 
-        if (GetKeyItem())
+        if (keyItemHave)
         {
             var houses = Physics2D.OverlapCircleAll(transform.position, bucketRange).Where(p => p.CompareTag("House"))
                 .ToArray();
@@ -112,8 +113,18 @@ public class Human : Core
 
         animator.SetBool(IsPickOnWater, false);
         InteractEnd();
-        useItem();
+        UseItem();
     }
+
+    public override void itemGet()
+    {
+        keyItemHave = true;
+    }
+    public void UseItem()
+    {
+        keyItemHave = false;
+    }
+
 
 
     /* public override void InteractEnd()

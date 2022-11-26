@@ -18,7 +18,7 @@ public abstract class Core : MonoBehaviour
 
     [Header("값")] [SerializeField] protected float moveSpeed;
 
-    [SerializeField] bool keyItemHave, over;
+    [SerializeField] bool over;
     [SerializeField] protected bool isInteracting = false; //, gageCount;
 
     private void Awake()
@@ -79,23 +79,10 @@ public abstract class Core : MonoBehaviour
         isInteracting = false;
     }
 
-    public void itemGet()
-    {
-        keyItemHave = true;
-    }
+    public abstract void itemGet();
 
     public void GameOver()
     {
         over = true;
-    }
-
-    protected bool GetKeyItem()
-    {
-        //Debug.Log("keyItemHave : " + keyItemHave);
-        return keyItemHave;
-    }
-    protected void useItem()
-    {
-        keyItemHave = false;
     }
 }

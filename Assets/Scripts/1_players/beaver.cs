@@ -9,6 +9,7 @@ public class Beaver : Core
     int gageCount, goalGage;
     [SerializeField]
     float handLength;
+    int keyItemCount, maxItemCount;
     protected override void Update()
     {
         base.Update();
@@ -28,11 +29,11 @@ public class Beaver : Core
     {
         if (Input.GetKeyDown(interActionKey))
         {
-            if (!isInteracting && waterManager.IsWater(transform.position) && !waterManager.IsDam(transform.position)&&GetKeyItem())
+            if (!isInteracting && waterManager.IsWater(transform.position) && !waterManager.IsDam(transform.position) && GetKeyItem())
             {
                 isInteracting = true;
             }
-            
+
             if (isInteracting)
                 gageUp();
         }
@@ -51,6 +52,20 @@ public class Beaver : Core
     public override void InteractEnd()
     {
         base.InteractEnd();
-        useItem();
+        UseItem();
+    }
+    public override void itemGet()
+    {
+        keyItemCount++;
+    }
+    public void UseItem()
+    {
+        keyItemCount--;
+    }
+    public bool GetKeyItem()
+    {
+        if (keyItemCount > 0 && keyItemCount < maxItemCount)
+            return true;
+        return false;
     }
 }
