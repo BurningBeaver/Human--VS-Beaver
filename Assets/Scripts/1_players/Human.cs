@@ -6,14 +6,22 @@ using Random = UnityEngine.Random;
 
 public class Human : Core
 {
-    bool keyItemHave;
+    private enum TileInteraction
+    {
+        WaterGetting = 1,
+        DamDestroying,
+        Pouring
+    }
+
+    private bool keyItemHave;
     private static readonly int IsPickOnWater = Animator.StringToHash("is_pick_on_water");
     [Header("범위")] [SerializeField] private float bucketRange;
-    [SerializeField] int gageCount, goalGage, WDH;
-    bool cantInteractWithRiver;
+    [SerializeField] int gageCount, goalGage;
+    private TileInteraction WDH;
+    private bool cantInteractWithRiver;
     public GameObject waterEffect;
 
-    IEnumerator BreakWait()
+    private IEnumerator BreakWait()
     {
         cantInteractWithRiver = true;
         yield return new WaitForSeconds(.5f);
@@ -33,12 +41,14 @@ public class Human : Core
             }
             else
             {
-                gageUp();
+                if (GetTile() == TileInteraction.DamDestroying && keyItemHave)
+                {
+                    return;
+                }
 
+                GageUp();
                 if (WDH != GetTile())
                 {
-                    Debug.Log(1);
-
                     isInteracting = false;
                     gageCount = 0;
                 }
@@ -46,16 +56,16 @@ public class Human : Core
         }
     }
 
-    private int GetTile()
+    private TileInteraction GetTile()
     {
         if (waterManager.IsWater(transform.position) && !keyItemHave && !cantInteractWithRiver)
         {
-            return 1;
+            return TileInteraction.WaterGetting;
         }
 
-        if (waterManager.IsDam(transform.position) && !cantInteractWithRiver)
+        if (waterManager.IsDam(transform.position) && !cantInteractWithRiver && !keyItemHave)
         {
-            return 2;
+            return TileInteraction.DamDestroying;
         }
 
         if (keyItemHave)
@@ -64,18 +74,18 @@ public class Human : Core
                 .ToArray();
 
             if (houses.Length > 0)
-                return 3;
+                return TileInteraction.Pouring;
         }
 
         return 0;
     }
 
-    private void gageUp()
+    private void GageUp()
     {
         gageCount++;
-        if (WDH == 3)
+        if (WDH == TileInteraction.Pouring)
         {
-            pouring();
+            Pouring();
             SoundManager.Instance.PlaySFX("WaterEmpty_" + Random.Range(0, 2));
             isInteracting = false;
             gageCount = 0;
@@ -84,7 +94,7 @@ public class Human : Core
         {
             isInteracting = false;
             gageCount = 0;
-            if (WDH == 1)
+            if (WDH == TileInteraction.WaterGetting)
             {
                 Instantiate(waterEffect, transform.position, Quaternion.identity);
                 SoundManager.Instance.PlaySFX("WaterFill");
@@ -93,19 +103,21 @@ public class Human : Core
                 itemGet();
                 InteractEnd();
             }
-            else if (WDH == 2)
-                destroying();
+            else if (WDH == TileInteraction.DamDestroying)
+            {
+                Destroying();
+            }
         }
     }
 
-    private void destroying()
+    private void Destroying()
     {
         waterManager.RemoveDam(transform.position);
         InteractEnd();
         StartCoroutine(BreakWait());
     }
 
-    private void pouring()
+    private void Pouring()
     {
         var houses = Physics2D.OverlapCircleAll(transform.position, bucketRange).Where(p => p.CompareTag("House"))
             .ToArray();
