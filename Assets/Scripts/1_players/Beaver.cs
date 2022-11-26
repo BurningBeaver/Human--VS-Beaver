@@ -94,7 +94,7 @@ public class Beaver : Core
 
     public bool KeyItemNotFULL()
     {
-        if (keyItemCount <= maxItemCount)
+        if (keyItemCount < maxItemCount)
             return true;
         return false;
     }
