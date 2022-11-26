@@ -10,7 +10,6 @@ public abstract class Core : MonoBehaviour
     protected Animator animator;
     protected WaterManager waterManager;
 
-
     [Header("조작키")] [SerializeField] protected KeyCode interActionKey;
     [SerializeField] protected KeyCode upKey;
     [SerializeField] protected KeyCode downKey;
