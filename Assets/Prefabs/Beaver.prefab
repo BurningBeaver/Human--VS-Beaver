@@ -57,8 +57,8 @@ MonoBehaviour:
   goalGage: 5
   handLength: 1
   keyItemCount: 0
+  maxItemCount: 5
   damCreateEffect: {fileID: 7881068726964103850, guid: 877de1572027a4a9e9b2af0e1b4994da, type: 3}
-  maxItemCount: 2
 --- !u!212 &6628448294206011406
 SpriteRenderer:
   m_ObjectHideFlags: 0
