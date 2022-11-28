@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 6509209282058336603}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5541714691886091395
 SpriteRenderer:
@@ -124,12 +124,13 @@ MonoBehaviour:
   downKey: 115
   leftKey: 97
   rightKey: 100
-  moveSpeed: 5
+  moveSpeed: 7
   bucketRange: 0
   gageCount: 0
   goalGage: 5
-  WDH: 0
+  waterCount: 0
   waterEffect: {fileID: 7881068726964103850, guid: 91b69f2bef04b498b943eaa3efb2c99f, type: 3}
+  damRemoveEffect: {fileID: 0}
 --- !u!1 &8189149020042220209
 GameObject:
   m_ObjectHideFlags: 0

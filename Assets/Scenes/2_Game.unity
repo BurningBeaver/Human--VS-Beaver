@@ -56845,11 +56845,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7903534942959540686, guid: 349d7f5993def454bbbfca3759b7e645, type: 3}
       propertyPath: moveSpeed
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7903534942959540686, guid: 349d7f5993def454bbbfca3759b7e645, type: 3}
       propertyPath: waterCount
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7903534942959540686, guid: 349d7f5993def454bbbfca3759b7e645, type: 3}
       propertyPath: damRemoveEffect
@@ -56993,12 +56993,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6628448294206011407, guid: 85ccdc43fee6140bea1541b70a6db1f8, type: 3}
+      propertyPath: goalGage
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628448294206011407, guid: 85ccdc43fee6140bea1541b70a6db1f8, type: 3}
       propertyPath: handLength
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6628448294206011407, guid: 85ccdc43fee6140bea1541b70a6db1f8, type: 3}
       propertyPath: maxItemCount
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects:
